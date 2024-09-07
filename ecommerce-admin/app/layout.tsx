@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { clerkMiddleware } from "@clerk/nextjs/server";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,19 +20,32 @@ export const metadata: Metadata = {
   title: "Admin DahBoard",
   description: "Admin DahBoard",
 };
-
+import {
+  
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+import './globals.css'
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
