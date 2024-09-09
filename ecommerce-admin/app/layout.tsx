@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {Inter} from 'next/font/google'
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { ClerkProvider } from "@clerk/nextjs";
 
-
+const inter = Inter ({subsets: ['latin']})
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import './globals.css'
+import { ModalProvider } from "@/providers/modal-providers";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,13 +38,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
+        <body className={inter.className}>
           <SignedOut>
             <SignInButton />
           </SignedOut>
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <ModalProvider/>
           {children}
         </body>
       </html>
