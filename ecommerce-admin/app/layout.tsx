@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   description: "Admin DahBoard",
 };
 import {
-  
   SignInButton,
   SignedIn,
   SignedOut,
@@ -30,11 +29,14 @@ import {
 } from '@clerk/nextjs'
 import './globals.css'
 import { ModalProvider } from "@/providers/modal-providers";
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
   return (
     <ClerkProvider>
       <html lang="en">

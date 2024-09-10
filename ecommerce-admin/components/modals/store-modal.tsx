@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useStoreModal } from "@/app/(root)/hooks/use-store.modal";
 import { Modal } from "@/components/ui/modal";
 import { useForm } from "react-hook-form";
@@ -8,12 +9,15 @@ import * as z from "zod";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Button } from "../ui/button";
 
+
 const formSchema = z.object({
   name: z.string().min(1, "Store name is required"),
 });
 
 export const StoreModal = () => {
   const storeModal = useStoreModal();
+
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,7 +49,7 @@ export const StoreModal = () => {
                     <div className="flex items-center gap-4"> {/* Flexbox контейнер с отступом */}
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <input
+                        <input disabled={loading}
                           {...field}
                           placeholder="Enter store name"
                           className="input"
@@ -57,8 +61,8 @@ export const StoreModal = () => {
                 )}
               />
               <div className="pt-6 space-x-2 items-center justify-end">
-                <Button variant="outline" onClick={storeModal.onClose}>Cancel</Button>
-               <Button type="submit">Continue </Button>
+                <Button disabled={loading} variant="outline" onClick={storeModal.onClose}>Cancel</Button>
+               <Button type="submit" disabled={loading}>Continue </Button>
               </div>
             
             </form>
