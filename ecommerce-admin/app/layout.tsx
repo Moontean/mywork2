@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Admin DahBoard",
-  description: "Admin DahBoard",
+  title: "Admin DashBoard",
+  description: "Admin DashBoard",
 };
 import {
   SignInButton,
@@ -42,12 +42,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
           <ToasterProvider/>
           <ModalProvider/>
           {children}
