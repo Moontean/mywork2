@@ -29,6 +29,7 @@ import {
 } from '@clerk/nextjs'
 import './globals.css'
 import { ModalProvider } from "@/providers/modal-providers";
+import { ToasterProvider } from "@/providers/toast-provider";
 
 
 export default function RootLayout({
@@ -47,6 +48,7 @@ export default function RootLayout({
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <ToasterProvider/>
           <ModalProvider/>
           {children}
         </body>
