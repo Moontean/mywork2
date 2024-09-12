@@ -6,8 +6,6 @@ import { auth } from "@clerk/nextjs/server"
 import prismadb from "@/lib/prismadb"
 
 
-
-
   const Navbar = async () => {
     const { userId } = auth();
 
