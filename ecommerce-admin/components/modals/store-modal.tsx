@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStoreModal } from "@/app/(root)/hooks/use-store.modal";
+import { useStoreModal } from "@/hooks/use-store.modal";
 import { Modal } from "@/components/ui/modal";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

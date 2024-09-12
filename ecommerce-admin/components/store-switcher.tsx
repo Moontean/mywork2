@@ -1,5 +1,5 @@
 "use client";
-import { useStoreModal } from "@/app/(root)/hooks/use-store.modal";
+import { useStoreModal } from "@/hooks/use-store.modal";
 import { Store } from "@prisma/client";
 import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover"
 import { useParams, useRouter } from "next/navigation";
