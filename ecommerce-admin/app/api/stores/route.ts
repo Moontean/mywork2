@@ -2,6 +2,14 @@ import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
+import { NextApiRequest, NextApiResponse } from 'next';
+// export default function handler(req: NextApiRequest, res: NextApiResponse) {
+//     if (req.method === 'GET') {
+//       res.status(200).json({ message: 'List of billboards' });
+//     } else {
+//       res.status(405).json({ message: 'Method not allowed' });
+//     }
+//   }// можно убрать
 export async function POST(
 req: Request,
 ) {
@@ -25,6 +33,8 @@ const store = await prismadb.store.create({
         userId
     }
 });
+
+
 
 return NextResponse.json(store);
 
