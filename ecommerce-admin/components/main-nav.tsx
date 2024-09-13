@@ -18,9 +18,9 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
       active: pathName === `/${params.storeId}`,
     },
     {
-        href: `/${params.storeId}/routes/billboards`,
-        label: 'Billboards',
-        active: pathName === `/${params.storeId}/billboards`,
+      href: `/${params.storeId}/billboards`,
+      label: 'Billboards',
+      active: pathName === `/${params.storeId}/billboards`,
     },
     {
       href: `/${params.storeId}/categories`,

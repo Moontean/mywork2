@@ -1,52 +1,34 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import {Inter} from 'next/font/google'
-import { clerkMiddleware } from "@clerk/nextjs/server";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider } from '@clerk/nextjs'
+import type { Metadata } from 'next'
+import { Poppins } from 'next/font/google'
 
-const inter = Inter ({subsets: ['latin']})
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { ThemeProvider } from '@/providers/theme-provider'
+import { ToastProvider } from '@/providers/toast-provider'
+
+import './globals.css'
+import { ModalProvider } from '@/providers/modal-providers'
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] })
 
 export const metadata: Metadata = {
-  title: "Admin DashBoard",
-  description: "Admin DashBoard",
-};
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
-import { ModalProvider } from "@/providers/modal-providers";
-import { ToasterProvider } from "@/providers/toast-provider";
-
+  title: 'Admin Dashboard',
+  description: 'Admin Dashboard',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
- 
+}: {
+  children: React.ReactNode
+}) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
-          <ToasterProvider/>
-          <ModalProvider/>
+      <body className={poppins.className}>
+          <ToastProvider/>
+          <ModalProvider />
           {children}
         </body>
       </html>
     </ClerkProvider>
-  );
+  )
 }
