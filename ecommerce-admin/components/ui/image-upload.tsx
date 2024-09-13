@@ -1,6 +1,5 @@
 'use client'
 
-// eslint-disable-next-line simple-import-sort/imports
 import { useEffect, useState } from 'react'
 
 import { ImagePlus, Trash } from 'lucide-react'
@@ -60,7 +59,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         ))}
       </div>
 
-      <CldUploadWidget onUpload={onUpload} uploadPreset="ixcruloc">
+      <CldUploadWidget onSuccess={onUpload} uploadPreset="zpvhmwwy">
         {({ open }) => {
           const onClick = () => {
             open()
